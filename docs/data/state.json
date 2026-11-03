@@ -1,0 +1,15 @@
+{
+  "status": "awaiting_market_data",
+  "start_date": "2026-11-03",
+  "end_date": "2026-12-03",
+  "start_capital_chf": 10000.00,
+  "cash_chf": 10000.00,
+  "positions": {"ANET":0,"CB":0,"HOLN":0,"NOVN":0,"ABB":0,"MSFT":0},
+  "marks_chf": {},
+  "signals": {},
+  "trades": [],
+  "history": [],
+  "last_update": null,
+  "last_error": null,
+  "data_source": "Noch keine validierten Marktdaten verbunden"
+}

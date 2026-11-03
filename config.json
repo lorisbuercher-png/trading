@@ -1,0 +1,13 @@
+{
+  "start_date": "2026-11-03",
+  "end_date": "2026-12-03",
+  "start_capital_chf": 10000.00,
+  "universe": [
+    {"ticker":"ANET","provider_symbol":"ANET","currency":"USD","market":"NYSE","name":"Arista Networks"},
+    {"ticker":"CB","provider_symbol":"CB","currency":"USD","market":"NYSE","name":"Chubb"},
+    {"ticker":"HOLN","provider_symbol":"HOLN","currency":"CHF","market":"SIX","name":"Holcim"},
+    {"ticker":"NOVN","provider_symbol":"NOVN","currency":"CHF","market":"SIX","name":"Novartis"},
+    {"ticker":"ABB","provider_symbol":"ABBN","currency":"CHF","market":"SIX","name":"ABB"},
+    {"ticker":"MSFT","provider_symbol":"MSFT","currency":"USD","market":"NASDAQ","name":"Microsoft"}
+  ]
+}
