@@ -2,14 +2,74 @@
   "status": "awaiting_market_data",
   "start_date": "2026-11-03",
   "end_date": "2026-12-03",
-  "start_capital_chf": 10000.00,
-  "cash_chf": 10000.00,
-  "positions": {"ANET":0,"CB":0,"HOLN":0,"NOVN":0,"ABB":0,"MSFT":0},
-  "marks_chf": {},
-  "signals": {},
-  "trades": [],
-  "history": [],
-  "last_update": null,
-  "last_error": null,
-  "data_source": "Noch keine validierten Marktdaten verbunden"
+  "start_capital_chf": 10000.0,
+  "cash_chf": 6646.97,
+  "positions": {
+    "ANET": 0,
+    "CB": 11,
+    "HOLN": 0,
+    "NOVN": 0,
+    "ABB": 0,
+    "MSFT": 0
+  },
+  "marks_chf": {
+    "ANET": 134.73104,
+    "CB": 302.86986,
+    "MSFT": 416.25931
+  },
+  "signals": {
+    "ANET": {
+      "buy": false,
+      "sell": true,
+      "score": -14.598,
+      "rsi": 27.2,
+      "sma20": 191.757,
+      "sma50": 195.22,
+      "prior_date": "2026-10-30",
+      "price_chf": 134.73
+    },
+    "CB": {
+      "buy": true,
+      "sell": false,
+      "score": 7.046,
+      "rsi": 68.4,
+      "sma20": 351.062,
+      "sma50": 343.322,
+      "prior_date": "2026-10-30",
+      "price_chf": 302.87
+    },
+    "MSFT": {
+      "buy": false,
+      "sell": true,
+      "score": -0.971,
+      "rsi": 36.2,
+      "sma20": 530.981,
+      "sma50": 512.911,
+      "prior_date": "2026-10-30",
+      "price_chf": 416.26
+    }
+  },
+  "trades": [
+    {
+      "date": "2026-11-02",
+      "ticker": "CB",
+      "side": "BUY",
+      "qty": 11,
+      "unit_chf": 302.8699,
+      "gross_chf": 3331.57,
+      "cost_chf": 21.46,
+      "reason": "Vortag: Kurs > SMA20 > SMA50, RSI 43–72, Momentum positiv"
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-11-02",
+      "nav_chf": 9978.54,
+      "cash_chf": 6646.97,
+      "usdchf": 0.82083
+    }
+  ],
+  "last_update": "2026-11-03T15:14:23+00:00",
+  "last_error": "HOLN: HTTP Error 404: Not Found; NOVN: HTTP Error 404: Not Found; ABB: HTTP Error 404: Not Found",
+  "data_source": "Twelve Data (nicht Swissquote), Tagesschlusskurse, approximierte Fills und modellierte Gebühren"
 }
