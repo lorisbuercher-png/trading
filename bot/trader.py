@@ -23,7 +23,9 @@ def load_json(path):
 def save_json(path, data):
     path.parent.mkdir(parents=True, exist_ok=True)
     temp = path.with_suffix('.tmp')
-    temp.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding='utf-8') + '\n'
+   
+    temp.write_text(json.dumps(data, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+
     temp.replace(path)
 
 
