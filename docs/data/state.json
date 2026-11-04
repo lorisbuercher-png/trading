@@ -13,40 +13,40 @@
     "MSFT": 0
   },
   "marks_chf": {
-    "ANET": 134.73104,
-    "CB": 302.86986,
-    "MSFT": 416.25931
+    "ANET": 138.33223,
+    "CB": 298.41855,
+    "MSFT": 424.164
   },
   "signals": {
     "ANET": {
       "buy": false,
       "sell": true,
-      "score": -14.598,
-      "rsi": 27.2,
-      "sma20": 191.757,
-      "sma50": 195.22,
-      "prior_date": "2026-10-30",
-      "price_chf": 134.73
+      "score": -21.746,
+      "rsi": 27.7,
+      "sma20": 189.619,
+      "sma50": 194.729,
+      "prior_date": "2026-11-02",
+      "price_chf": 138.33
     },
     "CB": {
       "buy": true,
       "sell": false,
-      "score": 7.046,
-      "rsi": 68.4,
-      "sma20": 351.062,
-      "sma50": 343.322,
-      "prior_date": "2026-10-30",
-      "price_chf": 302.87
+      "score": 8.889,
+      "rsi": 70.5,
+      "sma20": 352.987,
+      "sma50": 343.881,
+      "prior_date": "2026-11-02",
+      "price_chf": 298.42
     },
     "MSFT": {
       "buy": false,
       "sell": true,
-      "score": -0.971,
-      "rsi": 36.2,
-      "sma20": 530.981,
-      "sma50": 512.911,
-      "prior_date": "2026-10-30",
-      "price_chf": 416.26
+      "score": -7.977,
+      "rsi": 27.8,
+      "sma20": 530.078,
+      "sma50": 513.388,
+      "prior_date": "2026-11-02",
+      "price_chf": 424.16
     }
   },
   "trades": [
@@ -67,9 +67,15 @@
       "nav_chf": 9978.54,
       "cash_chf": 6646.97,
       "usdchf": 0.82083
+    },
+    {
+      "date": "2026-11-03",
+      "nav_chf": 9929.57,
+      "cash_chf": 6646.97,
+      "usdchf": 0.81415
     }
   ],
-  "last_update": "2026-11-03T15:14:23+00:00",
+  "last_update": "2026-11-04T03:19:30+00:00",
   "last_error": "HOLN: HTTP Error 404: Not Found; NOVN: HTTP Error 404: Not Found; ABB: HTTP Error 404: Not Found",
   "data_source": "Twelve Data (nicht Swissquote), Tagesschlusskurse, approximierte Fills und modellierte Gebühren"
 }
