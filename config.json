@@ -1,13 +1,359 @@
 {
   "start_date": "2026-11-03",
   "end_date": "2026-12-03",
-  "start_capital_chf": 10000.00,
+  "start_capital_chf": 10000.0,
+  "scan_limit_per_run": 32,
+  "api_request_spacing_seconds": 9,
   "universe": [
-    {"ticker":"ANET","provider_symbol":"ANET","currency":"USD","market":"NYSE","name":"Arista Networks"},
-    {"ticker":"CB","provider_symbol":"CB","currency":"USD","market":"NYSE","name":"Chubb"},
-    {"ticker":"HOLN","provider_symbol":"HOLN","currency":"CHF","market":"SIX","name":"Holcim"},
-    {"ticker":"NOVN","provider_symbol":"NOVN","currency":"CHF","market":"SIX","name":"Novartis"},
-    {"ticker":"ABB","provider_symbol":"ABBN","currency":"CHF","market":"SIX","name":"ABB"},
-    {"ticker":"MSFT","provider_symbol":"MSFT","currency":"USD","market":"NASDAQ","name":"Microsoft"}
+    {
+      "ticker": "ANET",
+      "provider_symbol": "ANET",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "Arista Networks"
+    },
+    {
+      "ticker": "CB",
+      "provider_symbol": "CB",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "Chubb"
+    },
+    {
+      "ticker": "HOLN",
+      "provider_symbol": "HOLN:SIX",
+      "currency": "CHF",
+      "market": "SIX",
+      "name": "Holcim"
+    },
+    {
+      "ticker": "NOVN",
+      "provider_symbol": "NOVN:SIX",
+      "currency": "CHF",
+      "market": "SIX",
+      "name": "Novartis"
+    },
+    {
+      "ticker": "ABB",
+      "provider_symbol": "ABBN:SIX",
+      "currency": "CHF",
+      "market": "SIX",
+      "name": "ABB"
+    },
+    {
+      "ticker": "MSFT",
+      "provider_symbol": "MSFT",
+      "currency": "USD",
+      "market": "NASDAQ",
+      "name": "Microsoft"
+    },
+    {
+      "ticker": "AAPL",
+      "provider_symbol": "AAPL",
+      "currency": "USD",
+      "market": "NASDAQ",
+      "name": "Apple"
+    },
+    {
+      "ticker": "NVDA",
+      "provider_symbol": "NVDA",
+      "currency": "USD",
+      "market": "NASDAQ",
+      "name": "Nvidia"
+    },
+    {
+      "ticker": "GOOGL",
+      "provider_symbol": "GOOGL",
+      "currency": "USD",
+      "market": "NASDAQ",
+      "name": "Alphabet"
+    },
+    {
+      "ticker": "AMZN",
+      "provider_symbol": "AMZN",
+      "currency": "USD",
+      "market": "NASDAQ",
+      "name": "Amazon"
+    },
+    {
+      "ticker": "META",
+      "provider_symbol": "META",
+      "currency": "USD",
+      "market": "NASDAQ",
+      "name": "Meta Platforms"
+    },
+    {
+      "ticker": "TSLA",
+      "provider_symbol": "TSLA",
+      "currency": "USD",
+      "market": "NASDAQ",
+      "name": "Tesla"
+    },
+    {
+      "ticker": "AMD",
+      "provider_symbol": "AMD",
+      "currency": "USD",
+      "market": "NASDAQ",
+      "name": "Advanced Micro Devices"
+    },
+    {
+      "ticker": "AVGO",
+      "provider_symbol": "AVGO",
+      "currency": "USD",
+      "market": "NASDAQ",
+      "name": "Broadcom"
+    },
+    {
+      "ticker": "QCOM",
+      "provider_symbol": "QCOM",
+      "currency": "USD",
+      "market": "NASDAQ",
+      "name": "Qualcomm"
+    },
+    {
+      "ticker": "ORCL",
+      "provider_symbol": "ORCL",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "Oracle"
+    },
+    {
+      "ticker": "CRM",
+      "provider_symbol": "CRM",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "Salesforce"
+    },
+    {
+      "ticker": "ADBE",
+      "provider_symbol": "ADBE",
+      "currency": "USD",
+      "market": "NASDAQ",
+      "name": "Adobe"
+    },
+    {
+      "ticker": "NFLX",
+      "provider_symbol": "NFLX",
+      "currency": "USD",
+      "market": "NASDAQ",
+      "name": "Netflix"
+    },
+    {
+      "ticker": "UBER",
+      "provider_symbol": "UBER",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "Uber"
+    },
+    {
+      "ticker": "PLTR",
+      "provider_symbol": "PLTR",
+      "currency": "USD",
+      "market": "NASDAQ",
+      "name": "Palantir"
+    },
+    {
+      "ticker": "CSCO",
+      "provider_symbol": "CSCO",
+      "currency": "USD",
+      "market": "NASDAQ",
+      "name": "Cisco"
+    },
+    {
+      "ticker": "IBM",
+      "provider_symbol": "IBM",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "IBM"
+    },
+    {
+      "ticker": "NOW",
+      "provider_symbol": "NOW",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "ServiceNow"
+    },
+    {
+      "ticker": "INTU",
+      "provider_symbol": "INTU",
+      "currency": "USD",
+      "market": "NASDAQ",
+      "name": "Intuit"
+    },
+    {
+      "ticker": "JPM",
+      "provider_symbol": "JPM",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "JPMorgan Chase"
+    },
+    {
+      "ticker": "BAC",
+      "provider_symbol": "BAC",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "Bank of America"
+    },
+    {
+      "ticker": "GS",
+      "provider_symbol": "GS",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "Goldman Sachs"
+    },
+    {
+      "ticker": "V",
+      "provider_symbol": "V",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "Visa"
+    },
+    {
+      "ticker": "MA",
+      "provider_symbol": "MA",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "Mastercard"
+    },
+    {
+      "ticker": "WMT",
+      "provider_symbol": "WMT",
+      "currency": "USD",
+      "market": "NASDAQ",
+      "name": "Walmart"
+    },
+    {
+      "ticker": "COST",
+      "provider_symbol": "COST",
+      "currency": "USD",
+      "market": "NASDAQ",
+      "name": "Costco"
+    },
+    {
+      "ticker": "KO",
+      "provider_symbol": "KO",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "Coca-Cola"
+    },
+    {
+      "ticker": "PG",
+      "provider_symbol": "PG",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "Procter & Gamble"
+    },
+    {
+      "ticker": "JNJ",
+      "provider_symbol": "JNJ",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "Johnson & Johnson"
+    },
+    {
+      "ticker": "LLY",
+      "provider_symbol": "LLY",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "Eli Lilly"
+    },
+    {
+      "ticker": "MRK",
+      "provider_symbol": "MRK",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "Merck"
+    },
+    {
+      "ticker": "UNH",
+      "provider_symbol": "UNH",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "UnitedHealth Group"
+    },
+    {
+      "ticker": "XOM",
+      "provider_symbol": "XOM",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "Exxon Mobil"
+    },
+    {
+      "ticker": "CVX",
+      "provider_symbol": "CVX",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "Chevron"
+    },
+    {
+      "ticker": "CAT",
+      "provider_symbol": "CAT",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "Caterpillar"
+    },
+    {
+      "ticker": "DE",
+      "provider_symbol": "DE",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "Deere & Co"
+    },
+    {
+      "ticker": "GE",
+      "provider_symbol": "GE",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "GE Aerospace"
+    },
+    {
+      "ticker": "HD",
+      "provider_symbol": "HD",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "Home Depot"
+    },
+    {
+      "ticker": "DIS",
+      "provider_symbol": "DIS",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "Walt Disney"
+    },
+    {
+      "ticker": "NKE",
+      "provider_symbol": "NKE",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "Nike"
+    },
+    {
+      "ticker": "PEP",
+      "provider_symbol": "PEP",
+      "currency": "USD",
+      "market": "NASDAQ",
+      "name": "PepsiCo"
+    },
+    {
+      "ticker": "ABBV",
+      "provider_symbol": "ABBV",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "AbbVie"
+    },
+    {
+      "ticker": "TMO",
+      "provider_symbol": "TMO",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "Thermo Fisher Scientific"
+    },
+    {
+      "ticker": "RTX",
+      "provider_symbol": "RTX",
+      "currency": "USD",
+      "market": "NYSE",
+      "name": "RTX"
+    }
   ]
 }
