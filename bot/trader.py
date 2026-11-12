@@ -13,6 +13,8 @@ import time
 import urllib.parse
 import urllib.request
 
+from evolution import EVOLUTION_FILE, update_evolution
+
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 PATH = ROOT / 'docs' / 'data' / 'state.json'
 CONFIG = ROOT / 'config.json'
@@ -113,7 +115,7 @@ def fee(gross, market):
     return 5.0 if market == 'SIX' else 4.8
 
 
-def choose_scan(universe, state, limit):
+def choose_scan(universe, state, limit, extra_held=None):
     """Prioritize ALL held symbols, then rotate fairly through the watchlist."""
     seen = set()
     unique = []
@@ -122,7 +124,7 @@ def choose_scan(universe, state, limit):
         if ticker not in seen:
             unique.append(asset)
             seen.add(ticker)
-    holdings = [x for x in unique if state.get('positions', {}).get(x['ticker'], 0) > 0]
+    holdings = [x for x in unique if state.get('positions', {}).get(x['ticker'], 0) > 0 or x['ticker'] in set(extra_held or [])]
     others = [x for x in unique if state.get('positions', {}).get(x['ticker'], 0) <= 0]
     if not others:
         return holdings, 0
@@ -157,7 +159,15 @@ def main():
         state['positions'].setdefault(asset['ticker'], 0)
     limit = min(60, max(1, int(cfg.get('scan_limit_per_run', 32))))
     spacing = max(9.0, float(cfg.get('api_request_spacing_seconds', 9)))
-    selection, next_cursor = choose_scan(universe, state, limit)
+    evolution_held = []
+    if EVOLUTION_FILE.exists():
+        try:
+            old_evolution = load_json(EVOLUTION_FILE)
+            evolution_held = [t for b in old_evolution.get('bots', [])
+                              for t, q in b.get('positions', {}).items() if q > 0]
+        except (OSError, ValueError, TypeError) as exc:
+            raise RuntimeError('Evolution-Zustand nicht lesbar, Handel gestoppt') from exc
+    selection, next_cursor = choose_scan(universe, state, limit, evolution_held)
     series, problems = {}, []
     for item in selection:
         try:
@@ -264,6 +274,7 @@ def main():
     state['last_error'] = '; '.join(problems[:5]) + (f'; +{len(problems)-5} weitere' if len(problems) > 5 else '') if problems else None
     state['signals'] = {k: {**s, 'price_chf': round(prices[k], 2)} for k, s in signals.items()}
     state['data_source'] = 'Twelve Data (nicht Swissquote): Tageskurse, ungefähre Ausführungen, modellierte Gebühren; rotierender Scanner'
+    update_evolution(latest, valid, usdchf, assets, state['scan'], problems)
     save_json(PATH, state)
     print('Processed', latest, 'checked', len(selection), 'valid', len(valid), 'trade', trade, 'NAV', round(nav, 2))
 
