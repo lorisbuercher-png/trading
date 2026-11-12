@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - feature/swingpilot-evolution-v1
+      - feature/evolution-autopilot
     paths:
       - 'bot/**'
       - 'tests/**'
