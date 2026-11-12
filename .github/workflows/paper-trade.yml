@@ -1,39 +1,42 @@
-
-name: SwingPilot Paper Trading
+name: SwingPilot Options Evolution (Paper)
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '47 23 * * 1-5'
+    # 07:40 UTC Tuesday-Saturday, after the previous US trading session.
+    # API EOD publication may lag; the runner retries any unprocessed date.
+    - cron: '40 7 * * 2-6'
 
 permissions:
   contents: write
 
 concurrency:
-  group: swingpilot-paper
+  group: swingpilot-options
   cancel-in-progress: false
 
 jobs:
-  simulate:
+  options-paper:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Verify evolution risk and lifecycle rules
-        run: python -m unittest discover -s tests -p 'test_evolution.py'
-      - name: Run paper trading simulation
+      - name: Verify options portfolio accounting and execution safety
+        run: python -m unittest discover -s tests -p 'test_options_engine.py' -v
+      - name: Run five OPTIONS-only paper agents
         env:
           TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
-        run: python bot/trader.py
-      - name: Save simulated portfolio
+          MARKETDATA_TOKEN: ${{ secrets.MARKETDATA_TOKEN }}
+        run: python bot/options_runner.py
+      - name: Persist options paper state, including errors
+        if: always()
         run: |
-          if ! git diff --quiet -- docs/data/state.json docs/data/evolution.json; then
+          if ! git diff --quiet -- docs/data/options.json; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add docs/data/state.json docs/data/evolution.json
-            git commit -m "Update paper trading portfolio"
+            git add docs/data/options.json
+            git commit -m "Update five options paper bots"
             git push
           fi
