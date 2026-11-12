@@ -139,10 +139,10 @@ def main():
     cfg = load_json(CONFIG)
     state = load_json(PATH)
     today = TODAY.isoformat()
-    if today > cfg['end_date']:
+    legacy_active = today <= cfg['end_date']
+    if not legacy_active:
+        # Preserve the original 30-day challenge; Evolution keeps scanning.
         state['status'] = 'finished'
-        save_json(PATH, state)
-        return
     if today < cfg['start_date']:
         print('Not started yet')
         return
@@ -222,6 +222,13 @@ def main():
     if not signals:
         state['last_error'] = 'Keine auswertbaren Signale.'
         save_json(PATH, state)
+        return
+
+    if not legacy_active:
+        update_evolution(latest, valid, usdchf, assets, state['scan'], problems)
+        state['last_error'] = '; '.join(problems[:5]) if problems else None
+        save_json(PATH, state)
+        print('Evolution updated without modifying the archived legacy challenge', latest)
         return
 
     # Paper trading only. Max 1 trade/session, max 35% new exposure,
