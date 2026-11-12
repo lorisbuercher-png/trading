@@ -9,6 +9,8 @@ on:
       - 'bot/**'
       - 'tests/**'
       - 'docs/evolution.js'
+      - 'docs/options.js'
+      - 'docs/data/options.json'
       - 'docs/data/evolution.json'
       - '.github/workflows/evolution-tests.yml'
   pull_request:
@@ -26,11 +28,13 @@ jobs:
         with:
           python-version: '3.12'
       - name: Syntax check
-        run: python -m py_compile bot/trader.py bot/evolution.py
+        run: python -m py_compile bot/trader.py bot/evolution.py bot/options_engine.py bot/options_runner.py
       - name: Portfolio and lifecycle tests
         run: python -m unittest discover -s tests -p 'test_evolution.py' -v
+      - name: Long-option paper accounting and settlement tests
+        run: python -m unittest discover -s tests -p 'test_options_engine.py' -v
       - name: Dashboard JavaScript syntax
-        run: node --check docs/evolution.js
+        run: node --check docs/evolution.js && node --check docs/options.js
       - name: Portfolio structure and funding checks
         run: |
           python - <<'PY'
@@ -41,4 +45,10 @@ jobs:
           assert all(b['cash_chf']==2000 for b in state['bots'] if b['generation']==1 and b['days_alive']==0)
           assert state['mode']=='paper_only'
           print('Valid five-bot paper trading state')
+          options=json.load(open('docs/data/options.json'))
+          assert options['instrument']=='US_LISTED_OPTIONS'
+          assert len(options['bots'])==5
+          assert sum(b['original_capital_chf'] for b in options['bots'])==10000
+          assert options['mode']=='paper_only'
+          print('Valid five-bot options paper state')
           PY
