@@ -23,3 +23,14 @@
 ## Sicherheitsstand
 - Kein Konto-Login, keine Swissquote API, kein Echtgeldmodus im Code.
 - Für Produktion: Datenlizenz, Kursqualitätsüberwachung, Brokerautorisierung, serverseitige Auditlogs, unveränderliche Transaktionsjournale, stärkere Risikosteuerung und unabhängige Prüfung nötig.
+
+## SwingPilot Evolution (neue 5-Bot-Simulation)
+
+- Öffne dieselbe Dashboard-Seite und scrolle zu **Evolution · 5 Bots**.
+- 5 voneinander getrennte virtuelle Depots zu je CHF 2’000: Alpha (Momentum), Hunter (Ausbruch), Shield (defensiv), Scout (Trendfolge), Nova (adaptiv).
+- Separater State unter `docs/data/evolution.json` mit fünf Portfolios, Rangliste, Orders und einem dauerhaften Archiv ausgeschiedener Generationen. Die alte 30-Tage-Simulation bleibt als Vergleich erhalten und wird **nicht** zum neuen Kapital hinzugerechnet.
+- Aus einer Strategie wird nur nach **mindestens 15 Handelstagen**, mehreren abgeschlossenen Trades und deutlichen Verlusten/Drawdowns eine neue Generation. Bei extremen Verlusten kann nach 20 Handelstagen ebenfalls ein Wechsel erfolgen. Bei fehlendem Kurs für eine gehaltene Aktie ist eine Eliminierung blockiert.
+- Der Nachfolger erbt **nur das Restkapital**. Parameter werden regelbasiert innerhalb begrenzter Schwellen mutiert und können einen Wert eines erfolgreicheren Bots übernehmen. Dies ist ein Evolutionsexperiment, **kein nachweislich profitables trainiertes KI-Modell**.
+- Keine weiteren Datenprovider-API-Aufrufe: Der Evolution-Teil benutzt den vorhandenen rotierenden Tageskurs-Scanner und bevorzugt gehaltene Aktien.
+- Modellannahme: Signale aus dem Vortag, Ausführung zum Schlusskurs des nächsten verfügbaren Handelstags, Gebühren und FX-Aufschläge simuliert. Kein Intraday-Trading, kein echtes Orderrouting. Unvollständige Kursdaten blockieren betroffene Orders.
+- Die bisherige 30-Tage-Strategie stoppt gemäss ihrem Enddatum; die Evolution läuft auch danach weiter. Jeder GitHub-Actions-Durchlauf prüft vor Trades die Evolution-Unit-Tests.

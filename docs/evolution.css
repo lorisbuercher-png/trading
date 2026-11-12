@@ -1,0 +1,29 @@
+/* SwingPilot Evolution mobile-first dashboard */
+#evo-dashboard{margin-top:24px;scroll-margin-top:20px}
+.ev-header{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:35px 0 20px}
+.ev-header h2{font-size:clamp(27px,4vw,38px);letter-spacing:-1.3px;margin:8px 0}
+.ev-muted{font-size:12px;color:#75839a;line-height:1.5}
+.ev-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-bottom:22px}
+.ev-summary>.glass{padding:19px;min-width:0}
+.ev-big{font-size:clamp(21px,2.4vw,30px);font-weight:820;letter-spacing:-.8px;margin:13px 0 7px}
+.ev-positive{color:#147c5c;font-weight:740}
+.ev-negative{color:#b13e50;font-weight:740}
+.ev-legend{font-weight:800;font-size:16px;margin:10px 0 14px}
+.ev-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.ev-bot{min-width:0}
+.ev-bot-head{display:flex;justify-content:space-between;align-items:start;gap:10px}
+.ev-bot-head h3{margin:4px 0;font-size:21px;letter-spacing:-.5px}
+.ev-pill{font-size:11px;border:1px solid #d5e5da;border-radius:30px;color:#187550;background:#ecfff6;padding:5px 9px}
+.ev-value{font-size:clamp(22px,2.5vw,30px);font-weight:820;letter-spacing:-1px;margin:24px 0 5px}
+.ev-pnl{font-size:12px;line-height:1.5;min-height:37px}
+.ev-info{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:#586b85;margin-top:16px;flex-wrap:wrap}
+.ev-divider{height:1px;background:#edf1f7;margin:14px 0}
+.ev-holdings{font-size:13px;font-weight:720;margin-top:6px}
+.ev-trade{font-size:12px;color:#5c6b84;line-height:1.8}
+.ev-bottom{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:16px}
+.ev-bottom h3{margin:0 0 14px}
+.ev-event{font-size:12px;padding:9px 0;border-bottom:1px solid #edf1f7;line-height:1.55}
+.ev-warning{border:1px solid #e9d0aa;border-radius:13px;background:#fff6e8;color:#865523;font-size:12px;line-height:1.5;padding:12px;margin-top:13px}
+.ev-disclaimer{color:#7a88a0;font-size:11px;line-height:1.7;margin-top:17px}
+@media(max-width:1050px){.ev-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.ev-header{display:block}.ev-header .btn{margin-top:11px}.ev-summary{grid-template-columns:1fr 1fr;gap:8px}.ev-summary>.glass:last-child{grid-column:1/-1}.ev-grid{grid-template-columns:1fr;gap:9px}.ev-bottom{grid-template-columns:1fr;gap:9px}.ev-summary>.glass{padding:15px}.ev-value{margin:17px 0 5px}}

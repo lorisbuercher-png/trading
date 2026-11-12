@@ -1,0 +1,44 @@
+name: SwingPilot Evolution Tests
+
+on:
+  push:
+    branches:
+      - main
+      - feature/swingpilot-evolution-v1
+    paths:
+      - 'bot/**'
+      - 'tests/**'
+      - 'docs/evolution.js'
+      - 'docs/data/evolution.json'
+      - '.github/workflows/evolution-tests.yml'
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax check
+        run: python -m py_compile bot/trader.py bot/evolution.py
+      - name: Portfolio and lifecycle tests
+        run: python -m unittest discover -s tests -p 'test_evolution.py' -v
+      - name: Dashboard JavaScript syntax
+        run: node --check docs/evolution.js
+      - name: Portfolio structure and funding checks
+        run: |
+          python - <<'PY'
+          import json
+          state=json.load(open('docs/data/evolution.json'))
+          assert len(state['bots'])==5
+          assert sum(b['initial_capital_chf'] for b in state['bots'])==10000
+          assert all(b['cash_chf']==2000 for b in state['bots'] if b['generation']==1 and b['days_alive']==0)
+          assert state['mode']=='paper_only'
+          print('Valid five-bot paper trading state')
+          PY

@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "mode": "paper_only",
+  "engine": "rule_based_evolution",
+  "start_date": "2026-11-11",
+  "last_date": "2026-11-11",
+  "total_start_chf": 10000,
+  "total_nav_chf": 10000,
+  "bots": [
+    {
+      "slot": "alpha",
+      "name": "Alpha",
+      "style": "Momentum",
+      "generation": 1,
+      "bot_id": "alpha-g1",
+      "status": "active",
+      "initial_capital_chf": 2000,
+      "generation_start_chf": 2000,
+      "cash_chf": 2000,
+      "nav_chf": 2000,
+      "peak_chf": 2000,
+      "drawdown_pct": 0,
+      "positions": {},
+      "entry_prices_chf": {},
+      "marks_chf": {},
+      "params": {
+        "rsi_min": 45,
+        "rsi_max": 71,
+        "momentum_min": 0,
+        "stop_pct": 0.07
+      },
+      "days_alive": 0,
+      "closed_trades": 0,
+      "winning_trades": 0,
+      "trades": [],
+      "history": [
+        {
+          "date": "2026-11-11",
+          "nav_chf": 2000
+        }
+      ],
+      "stale_holdings": []
+    },
+    {
+      "slot": "hunter",
+      "name": "Hunter",
+      "style": "Breakout",
+      "generation": 1,
+      "bot_id": "hunter-g1",
+      "status": "active",
+      "initial_capital_chf": 2000,
+      "generation_start_chf": 2000,
+      "cash_chf": 2000,
+      "nav_chf": 2000,
+      "peak_chf": 2000,
+      "drawdown_pct": 0,
+      "positions": {},
+      "entry_prices_chf": {},
+      "marks_chf": {},
+      "params": {
+        "rsi_min": 48,
+        "rsi_max": 77,
+        "momentum_min": 0.005,
+        "stop_pct": 0.09
+      },
+      "days_alive": 0,
+      "closed_trades": 0,
+      "winning_trades": 0,
+      "trades": [],
+      "history": [
+        {
+          "date": "2026-11-11",
+          "nav_chf": 2000
+        }
+      ],
+      "stale_holdings": []
+    },
+    {
+      "slot": "shield",
+      "name": "Shield",
+      "style": "Defensiv",
+      "generation": 1,
+      "bot_id": "shield-g1",
+      "status": "active",
+      "initial_capital_chf": 2000,
+      "generation_start_chf": 2000,
+      "cash_chf": 2000,
+      "nav_chf": 2000,
+      "peak_chf": 2000,
+      "drawdown_pct": 0,
+      "positions": {},
+      "entry_prices_chf": {},
+      "marks_chf": {},
+      "params": {
+        "rsi_min": 40,
+        "rsi_max": 66,
+        "momentum_min": 0,
+        "stop_pct": 0.045
+      },
+      "days_alive": 0,
+      "closed_trades": 0,
+      "winning_trades": 0,
+      "trades": [],
+      "history": [
+        {
+          "date": "2026-11-11",
+          "nav_chf": 2000
+        }
+      ],
+      "stale_holdings": []
+    },
+    {
+      "slot": "scout",
+      "name": "Scout",
+      "style": "Trendfolge",
+      "generation": 1,
+      "bot_id": "scout-g1",
+      "status": "active",
+      "initial_capital_chf": 2000,
+      "generation_start_chf": 2000,
+      "cash_chf": 2000,
+      "nav_chf": 2000,
+      "peak_chf": 2000,
+      "drawdown_pct": 0,
+      "positions": {},
+      "entry_prices_chf": {},
+      "marks_chf": {},
+      "params": {
+        "rsi_min": 44,
+        "rsi_max": 73,
+        "momentum_min": 0.01,
+        "stop_pct": 0.07
+      },
+      "days_alive": 0,
+      "closed_trades": 0,
+      "winning_trades": 0,
+      "trades": [],
+      "history": [
+        {
+          "date": "2026-11-11",
+          "nav_chf": 2000
+        }
+      ],
+      "stale_holdings": []
+    },
+    {
+      "slot": "nova",
+      "name": "Nova",
+      "style": "Adaptiv",
+      "generation": 1,
+      "bot_id": "nova-g1",
+      "status": "active",
+      "initial_capital_chf": 2000,
+      "generation_start_chf": 2000,
+      "cash_chf": 2000,
+      "nav_chf": 2000,
+      "peak_chf": 2000,
+      "drawdown_pct": 0,
+      "positions": {},
+      "entry_prices_chf": {},
+      "marks_chf": {},
+      "params": {
+        "rsi_min": 43,
+        "rsi_max": 70,
+        "momentum_min": 0.005,
+        "stop_pct": 0.06
+      },
+      "days_alive": 0,
+      "closed_trades": 0,
+      "winning_trades": 0,
+      "trades": [],
+      "history": [
+        {
+          "date": "2026-11-11",
+          "nav_chf": 2000
+        }
+      ],
+      "stale_holdings": []
+    }
+  ],
+  "graveyard": [],
+  "evolution_events": [],
+  "market_coverage": {
+    "watchlist_size": 50,
+    "attempted": 32,
+    "valid": 29,
+    "unavailable": 3,
+    "tickers_checked": [
+      "CB",
+      "INTU",
+      "PEP",
+      "BAC",
+      "GS",
+      "V",
+      "MA",
+      "WMT",
+      "COST",
+      "KO",
+      "PG",
+      "JNJ",
+      "LLY",
+      "MRK",
+      "UNH",
+      "XOM",
+      "CVX",
+      "CAT",
+      "DE",
+      "GE",
+      "HD",
+      "DIS",
+      "NKE",
+      "ABBV",
+      "TMO",
+      "RTX",
+      "ANET",
+      "HOLN",
+      "NOVN",
+      "ABB",
+      "MSFT",
+      "AAPL"
+    ],
+    "note": "Rotierende Stichprobe, KEIN Scan des gesamten Aktienmarkts."
+  },
+  "warnings": [
+    "HOLN: HTTP Error 404: Not Found; NOVN: HTTP Error 404: Not Found; ABB: HTTP Error 404: Not Found"
+  ],
+  "description": "5 separate paper portfolios; modeled EOD fills and fees; no real broker orders."
+}
