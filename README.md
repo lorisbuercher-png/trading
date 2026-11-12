@@ -34,3 +34,31 @@
 - Keine weiteren Datenprovider-API-Aufrufe: Der Evolution-Teil benutzt den vorhandenen rotierenden Tageskurs-Scanner und bevorzugt gehaltene Aktien.
 - Modellannahme: Signale aus dem Vortag, Ausführung zum Schlusskurs des nächsten verfügbaren Handelstags, Gebühren und FX-Aufschläge simuliert. Kein Intraday-Trading, kein echtes Orderrouting. Unvollständige Kursdaten blockieren betroffene Orders.
 - Die bisherige 30-Tage-Strategie stoppt gemäss ihrem Enddatum; die Evolution läuft auch danach weiter. Jeder GitHub-Actions-Durchlauf prüft vor Trades die Evolution-Unit-Tests.
+
+## NEU: SwingPilot Options Evolution (Paper-only)
+
+**Das Dashboard zeigt jetzt ausschliesslich Optionsbots.** Der frühere Aktien-Paper-Test ist unter `docs/legacy.html` archiviert. Der zuvor geplante Aktienhandel wurde im GitHub-Workflow durch die Options-Engine ersetzt; es werden keine neuen Aktienorders generiert.
+
+### Einmalig einrichten – zwei GitHub Actions Secrets
+
+1. Erstelle einen Optionsdaten-API-Schlüssel bei [MarketData.app](https://www.marketdata.app/). Die Historical/EOD Options Chain und Option Quotes API ist nötig; der Umfang und Preis richten sich nach dem Datenabonnement.
+2. Im GitHub-Repository zu **Settings → Secrets and variables → Actions** gehen, **New repository secret** wählen und als `MARKETDATA_TOKEN` den Schlüssel speichern. **Nicht in ein File oder in den Chat kopieren.**
+3. `TWELVEDATA_API_KEY` muss weiterhin als GitHub Secret vorhanden sein (historische Schlusskurse der Basiswerte und USD/CHF).
+4. **Actions → SwingPilot Options Evolution (Paper) → Run workflow** starten und den Lauf prüfen.
+5. Im [Options-Dashboard](https://lorisbuercher-png.github.io/trading/) die aktuelle Datenzeit und Warnungen kontrollieren. Ohne API-Zugang werden **keine Orders** erfunden. Der Workflow zeigt `setup_required` oder `attention`.
+
+### Handelsregeln
+
+- Fünf virtuelle Portfolios à CHF 2’000, ausschliesslich gekaufte US-Calls und US-Puts (Standardkontrakt mit 100 Anteilen), nicht Aktien.
+- Beobachtete Basiswerte: SPY, QQQ, AAPL, MSFT, NVDA. Andere Titel folgen nur nach Prüfung der Datenqualität.
+- Maximal **ein offener Kontrakt pro Bot**, maximal **30 %** des aktuellen Portfoliowerts an neuer Prämie plus Gebühren und mindestens **50 %** Liquidität beim Einstieg.
+- Standardoptionen, ungefähr 20–65 Tage bis Verfall, OI und Spread geprüft. Beim Kauf mindestens 10 Resttage; keine 0DTE- oder ungedeckten Optionen.
+- Regelbasierte Alpha/Hunter/Shield/Scout/Nova-Signale nutzen abgeschlossene Underlying-Tageskerzen. Ein Signal erzeugt **nur eine vorgemerkte Order**. Eine Ausführung wird erst mit dem Geld-/Briefkurs des **folgenden Handelstags** gebucht. Fehlende oder veraltete Daten blockieren die Ausführung.
+- Long Options werden für die Depotbewertung zum Geldkurs markiert. Verkauf wird spätestens ab ungefähr 10 Tagen bis zum Ablauf vorgemerkt, ist jedoch nur bei neuem handelbaren Schlusskurs ausführbar. **Keine Ausübung oder Zuteilung** ist implementiert; fehlende Kurse nahe oder nach Verfall führen zur Warnung und zu einer Sperre der betroffenen Strategie.
+- Die automatische Evolution erfordert Mindestlaufzeit und Verlustgrenzen. Das Restkapital wird von der nächsten Generation übernommen. **Dies ist regelbasierte Optimierung, noch kein trainierendes KI-Modell.**
+- Vergleich und Backtesting dürfen die simulierten Folgetagsausführungen nicht mit real ausführbaren Preisen verwechseln; verzögerte EOD-Daten und Tagesendkurse können nicht garantieren, dass Bid/Ask-Preise am Schlusskurs tatsächlich handelbar waren.
+- Start des Options-Experiments: 11.11.2026 mit frischen CHF 10’000 virtuellem Kapital. Das historische Aktien-Paper-Portfolio wird **nicht** mitgerechnet.
+
+### Automatischer Ablauf
+
+GitHub Actions läuft **Dienstag bis Samstag 07:40 UTC** (nach dem vorherigen US-Handelstag). Der Runner versucht bis zu drei noch nicht verarbeitete Wochentage geordnet nachzuholen. US-Börsenfeiertage und Datenverzögerungen werden **nicht übersprungen**, sondern bei fehlender Datenlage zur Prüfung markiert. Das Dashboard zeigt Fehler und die letzte verarbeitete Sitzung; es wird nur der Options-Status `docs/data/options.json` geschrieben.
