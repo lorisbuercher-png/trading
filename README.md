@@ -1,4 +1,10 @@
-# SwingPilot — 30-Tage Paper-Trading (03.11.–03.12.2026)
+# SwingPilot Evolution – automatisches Options-Paper-Trading
+
+**Aktueller Modus: fünf Long-Options-Bots à CHF 2’000.** Automatisch per GitHub Actions nach dem US-Handelsschluss; echte Optionsdaten erfordern `MARKETDATA_TOKEN` in GitHub Secrets. Keine Echtgeldorders, keine Aktienkäufe. [Options-Dashboard](https://lorisbuercher-png.github.io/trading/).
+
+Die frühere 30-Tage-Aktien-Challenge ist archiviert und wird nicht mehr automatisch ausgeführt. Ihre damaligen Installationsschritte und Regeln stehen zur Nachvollziehbarkeit hier:
+
+## Archiv: 30-Tage-Aktien-Paper-Trading (03.11.–03.12.2026)
 
 **Reine Simulation.** Keine Swissquote-Kontoverbindung, keine echten Broker-Orders, keine Gelder.
 
