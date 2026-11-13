@@ -4,10 +4,10 @@
   "mode": "paper_only",
   "quote_source": "MarketData.app EOD options bid/ask",
   "engine": "rule_based_options_evolution",
-  "status": "waiting_for_data",
+  "status": "setup_required",
   "start_date": "2026-11-11",
   "last_date": "2026-11-11",
-  "last_check": null,
+  "last_check": "2026-11-13T15:40:04+00:00",
   "total_start_chf": 10000,
   "total_nav_chf": 10000,
   "bots": [
@@ -181,8 +181,8 @@
   "evolution_events": [],
   "market_coverage": {},
   "warnings": [
-    "Erster Optionsdatenlauf ausstehend"
+    "Fehlende GitHub-Secrets: MARKETDATA_TOKEN; keine simulierten Optionsorders ausgeführt."
   ],
-  "last_error": null,
+  "last_error": "Fehlende GitHub-Secrets: MARKETDATA_TOKEN",
   "note": "Nur Long Calls/Puts; keine Aktienorders, Margin oder Ausübung. Keine echten Orders."
 }
